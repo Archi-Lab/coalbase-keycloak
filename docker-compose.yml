@@ -13,7 +13,7 @@ services:
     networks:
       - keycloak
   keycloak:
-    image: jboss/keycloak
+    image: docker.nexus.archi-lab.io/archilab/coalbase-keycloak:${BUILD_ID}
     environment:
       - DB_VENDOR=POSTGRES
       - DB_ADDR=keycloak_db
