@@ -23,7 +23,7 @@ services:
       - KEYCLOAK_USER:${COALBASE_KEYCLOAK_USER}
       - KEYCLOAK_PASSWORD:${COALBASE_KEYCLOAK_PASSWORD}
     ports:
-      - 8080:8080
+      - 8090:8080
     depends_on:
       - keycloak_db
     networks:
