@@ -8,7 +8,7 @@ pipeline {
             sh "docker build -t docker.nexus.archi-lab.io/archilab/coalbase-keycloak ."
             sh "docker tag docker.nexus.archi-lab.io/archilab/coalbase-keycloak docker.nexus.archi-lab.io/archilab/coalbase-keycloak:${env.BUILD_ID}"
             script {
-                docker.withRegistry('https://docker.nexus.archi-lab.io//', 'archilab-nexus-jenkins-user') {
+                docker.withRegistry('https://docker.nexus.archi-lab.io/', 'archilab-nexus-jenkins-user') {
                     sh "docker push docker.nexus.archi-lab.io/archilab/coalbase-keycloak"
                 }
             }
@@ -29,8 +29,10 @@ pipeline {
 			steps {
 				script {
           withCredentials([usernamePassword(credentialsId: 'CoalbaseKeycloak', usernameVariable: 'COALBASE_KEYCLOAK_USER', passwordVariable: 'COALBASE_KEYCLOAK_PASSWORD')]){
-            docker.withServer('tcp://10.10.10.25:2376', 'CoalbaseVM') {
-              sh 'docker stack deploy -c ./docker-compose.yml -c ./docker-compose-prod.yml keycloak'
+            docker.withRegistry('https://docker.nexus.archi-lab.io/', 'archilab-nexus-jenkins-user') {
+              docker.withServer('tcp://10.10.10.25:2376', 'CoalbaseVM') {
+                sh 'docker stack deploy -c ./docker-compose.yml -c ./docker-compose-prod.yml keycloak'
+              }
             }
 					}
 				}
