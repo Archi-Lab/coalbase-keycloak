@@ -19,7 +19,7 @@ services:
       - DB_ADDR:keycloak_db
       - DB_DATABASE:keycloak
       - DB_USER:keycloak
-      - DB_PASSWORD:password
+      - DB_PASSWORD:_CoalbaseKeycloak_2019
       - KEYCLOAK_USER:${COALBASE_KEYCLOAK_USER}
       - KEYCLOAK_PASSWORD:${COALBASE_KEYCLOAK_PASSWORD}
     ports:
