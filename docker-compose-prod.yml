@@ -9,6 +9,8 @@ services:
         max_attempts: 3
         window: 120s
   keycloak:
+    environment:
+      - KEYCLOAK_IMPORT=/realmconfig/coalbase-realm.json
     deploy:
       restart_policy:
         condition: on-failure

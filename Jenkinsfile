@@ -1,6 +1,30 @@
 pipeline {
 	agent any
 	stages {
+    stage('Build') {
+        steps {
+            updateGitlabCommitStatus name: "Building", state: "running"
+
+            sh "docker build -t docker.nexus.archi-lab.io/archilab/coalbase-keycloak -f src/main/docker/Dockerfile ."
+            sh "docker tag docker.nexus.archi-lab.io/archilab/coalbase-keycloak docker.nexus.archi-lab.io/archilab/coalbase-keycloak:${env.BUILD_ID}"
+            script {
+                docker.withRegistry('https://docker.nexus.archi-lab.io//', 'archilab-nexus-jenkins-user') {
+                    sh "docker push docker.nexus.archi-lab.io/archilab/coalbase-keycloak"
+                }
+            }
+        }
+        post {
+            success {
+                updateGitlabCommitStatus name: "Building", state: "success"
+            }
+            failure {
+                updateGitlabCommitStatus name: "Building", state: "failed"
+            }
+            unstable {
+                updateGitlabCommitStatus name: "Building", state: "success"
+            }
+        }
+    }
 		stage('Deploy') {
 			steps {
 				script {
