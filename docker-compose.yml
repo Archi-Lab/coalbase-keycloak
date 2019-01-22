@@ -6,22 +6,22 @@ services:
     volumes:
       - keycloak_db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD:_CoalbaseKeycloak_2019
-      - POSTGRES_USER:keycloak
-      - POSTGRES_DB:keycloak
-      - PGDATA:/var/lib/postgresql/data/pgdata
+      - POSTGRES_PASSWORD=_CoalbaseKeycloak_2019
+      - POSTGRES_USER=keycloak
+      - POSTGRES_DB=keycloak
+      - PGDATA=/var/lib/postgresql/data/pgdata
     networks:
       - keycloak
   keycloak:
     image: jboss/keycloak
     environment:
-      - DB_VENDOR:POSTGRES
-      - DB_ADDR:keycloak_db
-      - DB_DATABASE:keycloak
-      - DB_USER:keycloak
-      - DB_PASSWORD:_CoalbaseKeycloak_2019
-      - KEYCLOAK_USER:${COALBASE_KEYCLOAK_USER}
-      - KEYCLOAK_PASSWORD:${COALBASE_KEYCLOAK_PASSWORD}
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=keycloak_db
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=_CoalbaseKeycloak_2019
+      - KEYCLOAK_USER=${COALBASE_KEYCLOAK_USER}
+      - KEYCLOAK_PASSWORD=${COALBASE_KEYCLOAK_PASSWORD}
     ports:
       - 8090:8080
     depends_on:
