@@ -5,7 +5,7 @@ pipeline {
         steps {
             updateGitlabCommitStatus name: "Building", state: "running"
 
-            sh "docker build -t docker.nexus.archi-lab.io/archilab/coalbase-keycloak -f src/main/docker/Dockerfile ."
+            sh "docker build -t docker.nexus.archi-lab.io/archilab/coalbase-keycloak ."
             sh "docker tag docker.nexus.archi-lab.io/archilab/coalbase-keycloak docker.nexus.archi-lab.io/archilab/coalbase-keycloak:${env.BUILD_ID}"
             script {
                 docker.withRegistry('https://docker.nexus.archi-lab.io//', 'archilab-nexus-jenkins-user') {
