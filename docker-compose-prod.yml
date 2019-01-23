@@ -8,6 +8,10 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
   keycloak:
     environment:
       - KEYCLOAK_IMPORT=/realmconfig/coalbase-realm.json
@@ -17,3 +21,7 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
