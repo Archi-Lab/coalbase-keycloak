@@ -13,8 +13,6 @@ services:
       options:
         gelf-address: "udp://127.0.0.1:12201"
   keycloak:
-    environment:
-      - KEYCLOAK_IMPORT=/realmconfig/coalbase-realm.json
     deploy:
       restart_policy:
         condition: on-failure
