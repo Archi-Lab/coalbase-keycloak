@@ -51,7 +51,7 @@ pipeline {
         }
     }
     post {
-        always {
+        failure {
             discordSend description: 'Jenkins Pipeline Build', footer: 'CoalBase-KeyCloak', link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: 'https://discordapp.com/api/webhooks/537602034015272960/9qa_bwMs5ZVuntNCg3BmHXYSDgo9gPZjHrgxsPJG8xya3hesFpm2aiAu8VcO3yNG9r59'
         }
     }
