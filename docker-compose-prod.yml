@@ -13,6 +13,11 @@ services:
       options:
         gelf-address: "udp://127.0.0.1:12201"
   keycloak:
+    environment:
+      - KEYCLOAK_USER=${COALBASE_KEYCLOAK_USER}
+      - KEYCLOAK_PASSWORD=${COALBASE_KEYCLOAK_PASSWORD}
+      - PROXY_ADDRESS_FORWARDING=true
+      - KEYCLOAK_HOSTNAME=login.coalbase.io
     deploy:
       restart_policy:
         condition: on-failure

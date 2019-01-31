@@ -20,10 +20,6 @@ services:
       - DB_DATABASE=keycloak
       - DB_USER=keycloak
       - DB_PASSWORD=_CoalbaseKeycloak_2019
-      - KEYCLOAK_USER=${COALBASE_KEYCLOAK_USER}
-      - KEYCLOAK_PASSWORD=${COALBASE_KEYCLOAK_PASSWORD}
-      - PROXY_ADDRESS_FORWARDING=true
-      - KEYCLOAK_HOSTNAME=login.coalbase.io
     ports:
       - 8090:8080
     depends_on:

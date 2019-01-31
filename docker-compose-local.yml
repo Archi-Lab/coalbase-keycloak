@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  keycloak:
+    image: docker.nexus.archi-lab.io/archilab/coalbase-keycloak
+    environment:
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=keycloak_db
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=_CoalbaseKeycloak_2019
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_HOSTNAME='localhost'
+    ports:
+      - 8090:8080
+    depends_on:
+      - keycloak_db
+    networks:
+      - keycloak
+volumes:
+  keycloak_db: {}
+networks:
+  keycloak: {}
