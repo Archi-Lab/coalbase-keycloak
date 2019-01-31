@@ -13,6 +13,7 @@ services:
       options:
         gelf-address: "udp://127.0.0.1:12201"
   keycloak:
+    image: docker.nexus.archi-lab.io/archilab/coalbase-keycloak:${BUILD_ID}
     deploy:
       restart_policy:
         condition: on-failure
