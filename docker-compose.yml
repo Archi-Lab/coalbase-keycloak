@@ -25,7 +25,10 @@ services:
       - keycloak_db
     networks:
       - keycloak
+      - coalbase_backend
 volumes:
   keycloak_db: {}
 networks:
   keycloak: {}
+  coalbase_backend:
+    external: true
