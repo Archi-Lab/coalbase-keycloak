@@ -14,7 +14,7 @@ services:
       - keycloak
   keycloak:
     environment:
-      - DB_VENDOR=POSTGRES
+      - DB_VENDOR=postgres
       - DB_ADDR=keycloak_db
       - DB_DATABASE=keycloak
       - DB_USER=keycloak
