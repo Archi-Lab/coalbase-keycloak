@@ -28,13 +28,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker.withServer('tcp://10.10.10.25:2376', 'CoalbaseVM') {
+                    // docker.withServer('tcp://10.10.10.25:2376', 'CoalbaseVM') {
                         docker.withRegistry('https://docker.nexus.archi-lab.io//', 'archilab-nexus-jenkins-user') {
                             withCredentials([usernamePassword(credentialsId: 'CoalbaseKeycloak', usernameVariable: 'COALBASE_KEYCLOAK_USER', passwordVariable: 'COALBASE_KEYCLOAK_PASSWORD')]) {
                                 sh 'docker stack deploy --with-registry-auth -c ./docker-compose.yml -c ./docker-compose-prod.yml keycloak'
                             }
                         }
-                    }
+                    // }
                 }
             }
             post {
