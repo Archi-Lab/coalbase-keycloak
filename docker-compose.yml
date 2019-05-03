@@ -29,7 +29,7 @@ services:
 volumes:
   keycloak_db: {}
 networks:
-  keycloak: {}
+  keycloak:
     driver: overlay
     attachable: true
   # coalbase_backend:
