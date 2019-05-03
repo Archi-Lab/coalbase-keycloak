@@ -18,7 +18,7 @@ services:
       - KEYCLOAK_USER=${COALBASE_KEYCLOAK_USER}
       - KEYCLOAK_PASSWORD=${COALBASE_KEYCLOAK_PASSWORD}
       - PROXY_ADDRESS_FORWARDING=true
-      - KEYCLOAK_HOSTNAME=login.archi-lab.io
+      - KEYCLOAK_HOSTNAME=login.coalbase.io
     deploy:
       restart_policy:
         condition: on-failure

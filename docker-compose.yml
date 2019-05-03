@@ -30,5 +30,7 @@ volumes:
   keycloak_db: {}
 networks:
   keycloak: {}
+    driver: overlay
+    attachable: true
   # coalbase_backend:
   #   external: true
