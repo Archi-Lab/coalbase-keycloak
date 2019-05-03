@@ -21,9 +21,10 @@ Um die Keycloak Realms und User zu sichern musst das Backup-Skript auf der Masch
 ```
 ./backup.sh
 ```
-Das Skript erzeugt einen Ordner `keycloak-export` mit JSON-Files für die exportierten Realms und User.
+Das Skript erzeugt einen Ordner `keycloak-export` mit JSON-Files für die exportierten Realms und User. Der durch das Skript gestartete Container kann nach abgeschlossenem Backup beendet werden (CTRL-C).
 
 Zur Wiederherstellung muss das Restore-Skript auf der Maschine ausgeführt werden, wo der wiederherzustellende Keycloak-Stack läuft. Der gesicher Ordner `keycloak-export` muss sich bei der Ausführung im selben Ordner befinden wie das Skript.
 ```
 ./restore.sh
 ```
+Der durch das Skript gestartete Container kann nach abgeschlossenem Backup beendet werden (CTRL-C).
