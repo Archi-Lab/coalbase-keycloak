@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  keycloak:
+    image: docker.nexus.archi-lab.io/archilab/coalbase-keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_HOSTNAME='localhost'
