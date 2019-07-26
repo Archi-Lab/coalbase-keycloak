@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
+CURRENT=$(pwd)
 
 # pull service
 docker-compose \
-  -f "./docker-compose.yml" \
-  -f "./docker-compose-dev.yml" \
+  -f "$CURRENT/docker-compose.yml" \
+  -f "$CURRENT/docker-compose-dev.yml" \
   pull
   
 # start service
 docker-compose -p security \
-  -f "./docker-compose.yml" \
-  -f "./docker-compose-dev.yml" \
+  -f "$CURRENT/docker-compose.yml" \
+  -f "$CURRENT/docker-compose-dev.yml" \
   up -d
