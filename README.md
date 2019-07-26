@@ -15,3 +15,16 @@
 * Falls das Keycloak Image von Docker nicht bezogen werden kann, muss dies vorher von einer eigenen Docker Registry aus bezogen werden. Nachdem man sich mit “docker login docker.nexus.archi-lab.io” eingeloggt hat, kann das Image mit “docker pull docker.nexus.archi-lab.io/archilab/coalbase-keycloak” heruntergeladen werden.
 
 * Ein in Keycloak definierter User braucht unbedingt die Rolle “view-profiles”, damit dieser erfolgreicht eingeloggt werden kann. Dies ist eine für den Client “account” definierte Rolle, welche bei der Erstellung eines neuen Users zugeordnet wird, wenn dies unter “Roles/Default Roles/Client Roles” konfiguriert wurde. Notfalls kann diese Rolle auch einem einzelnen User unter “Users/<User>/Role Mappings/Client Roles” zugewiesen werden.
+
+## Backup & Recovery
+Um die Keycloak Realms und User zu sichern musst das Backup-Skript auf der Maschine ausgeführt werden, wo der zu sichernde Keycloak-Stack läuft.
+```
+./backup.sh
+```
+Das Skript erzeugt einen Ordner `keycloak-export` mit JSON-Files für die exportierten Realms und User. Der durch das Skript gestartete Container kann nach abgeschlossenem Backup beendet werden (CTRL-C).
+
+Zur Wiederherstellung muss das Restore-Skript auf der Maschine ausgeführt werden, wo der wiederherzustellende Keycloak-Stack läuft. Der gesicher Ordner `keycloak-export` muss sich bei der Ausführung im selben Ordner befinden wie das Skript.
+```
+./restore.sh
+```
+Der durch das Skript gestartete Container kann nach abgeschlossenem Backup beendet werden (CTRL-C).
