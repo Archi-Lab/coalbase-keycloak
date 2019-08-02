@@ -7,3 +7,9 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_HOSTNAME='localhost'
+    networks:
+       - coalbase_backend
+       
+networks:
+  coalbase_backend:
+    external: true
